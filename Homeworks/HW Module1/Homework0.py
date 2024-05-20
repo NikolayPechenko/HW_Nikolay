@@ -1,11 +1,11 @@
 # print(str(123))
 # print(len(str(123)))
 
-# a = int(input('Введите первое число '))
-# b = int(input('Введите второе число '))
-# sum = a + b
-# dif = a - b
-# print(str(sum), str(dif))
+a = int(input('Введите первое число '))
+b = int(input('Введите второе число '))
+sum = a + b
+dif = a - b
+print(str(sum), str(dif))
 
 # a = float(input('Введите первое число '))
 # b = float(input('Введите второе число '))
