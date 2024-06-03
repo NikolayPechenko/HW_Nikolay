@@ -11,3 +11,17 @@ def get_multiplied_digits(number):
 
 
 print(get_multiplied_digits(2060))
+
+
+mp = 1
+n = 55
+while n > 0:
+    mp = mp * (n % 10)
+    n = n // 10
+print(mp)
+
+result = 1
+numbers = 56
+for digit in str(numbers): # Преобразуем число в строку и берем абсолютное значение
+    result *= int(digit)
+print(result)

@@ -8,7 +8,10 @@ def password(number):
     return result
 
 
-n = int(input('Случайное число: '))
-print(password(n))
+i = 3
+while i > 0:
+    n = int(input('Случайное число: '))
+    print(password(n))
+    i = i - 1
 
 

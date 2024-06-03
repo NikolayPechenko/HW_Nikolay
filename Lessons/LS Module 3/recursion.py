@@ -7,22 +7,22 @@
 #
 # print(summa(5))
 
-
-stack = []
-stack.append(1)
-print('Добавили элемент: ', stack)
-stack.append(2)
-print('Добавили элемент: ', stack)
-stack.append(3)
-print('Добавили элемент: ', stack)
-print('Полный список: ', stack)
-stack.pop()
-print('Убрали элемент: ', stack)
-stack.pop()
-print('Убрали элемент: ', stack)
-stack.pop()
-print('Убрали элемент: ', stack)
-
+#
+# stack = []
+# stack.append(1)
+# print('Добавили элемент: ', stack)
+# stack.append(2)
+# print('Добавили элемент: ', stack)
+# stack.append(3)
+# print('Добавили элемент: ', stack)
+# print('Полный список: ', stack)
+# stack.pop()
+# print('Убрали элемент: ', stack)
+# stack.pop()
+# print('Убрали элемент: ', stack)
+# stack.pop()
+# print('Убрали элемент: ', stack)
+#
 
 
 # def get_multiplied_digits(number):
@@ -35,3 +35,15 @@ print('Убрали элемент: ', stack)
 #
 # n = int(input())
 # print(get_multiplied_digits(n))
+
+
+n = int(input('Xcbkj: '))
+sum = 0
+mp = 1
+while n > 0:
+    sum += n % 10
+    mp *= n % 10
+    n = n // 10
+
+print(sum)
+print(mp)
