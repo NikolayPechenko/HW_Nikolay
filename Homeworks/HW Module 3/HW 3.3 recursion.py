@@ -20,8 +20,8 @@ while n > 0:
     n = n // 10
 print(mp)
 
-result = 1
+result = 0
 numbers = 56
-for digit in str(numbers): # Преобразуем число в строку и берем абсолютное значение
-    result *= int(digit)
+for digit in str(numbers):  # Преобразуем число в строку и берем абсолютное значение
+    result += int(digit)
 print(result)

@@ -27,7 +27,6 @@ def calculate_structure_sum(params):
 print(calculate_structure_sum(data_structure))
 
 
-
 # def calculate_structure_sum(params):
 #     global count
 #     for i in params:
@@ -53,4 +52,3 @@ print(calculate_structure_sum(data_structure))
 #
 #
 # print(calculate_structure_sum(data_structure))
-
