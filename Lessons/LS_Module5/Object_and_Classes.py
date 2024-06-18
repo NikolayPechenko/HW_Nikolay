@@ -1,6 +1,6 @@
 class Toyota:
 
-    def __init__(self):
+    def __init__(self):  # метод с двоным подчеркиванием - специальный метод, дандер метод
         self.color = 'Бардовый фантомас'
         self.price = '100000 миллионов'
         self.max_velocity = '258 км/ч'
@@ -43,6 +43,12 @@ class Human:
         self.age = self.age + 1
         print(f'У меня День Рождения, мне теперь {self.age} лет')
 
+    def __len__(self):  # метод определения длины, в нашем случае длина = возраст человека
+        return self.age
+
+    def __del__(self):  # метод деструктор
+        print(f'{self.name} убежал')
+
 
 den = Human('Дениска', 25)  # создан объект класса Human, объект уникальный
 maxim = Human('Макс',56)
@@ -51,7 +57,9 @@ print(maxim.name, maxim.age)
 den.surname = 'Попов'  # можем самомтоятельно добавлять атрибуты и менять их
 print(den.surname)
 
+# del den
+maxim.birthday()
 den.birthday()
-
-
+# input()  #  написали инпут чтобы максим удалился не сразу
+print(len(den))
 
