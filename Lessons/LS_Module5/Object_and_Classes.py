@@ -46,6 +46,21 @@ class Human:
     def __len__(self):  # метод определения длины, в нашем случае длина = возраст человека
         return self.age
 
+    def __lt__(self, other):
+        return self.age < other.age
+
+    def __gt__(self, other):
+        return self.age > other.age
+
+    def __eq__(self, other):
+        return self.name == other.name and self.age == other.age
+
+    def __bool__(self):
+        return self.age
+
+    def __str__(self):  #  позволяет обращаться по имени без self
+        return f'{self.name}'
+
     def __del__(self):  # метод деструктор
         print(f'{self.name} убежал')
 
@@ -63,3 +78,7 @@ den.birthday()
 # input()  #  написали инпут чтобы максим удалился не сразу
 print(len(den))
 
+print(den < maxim)
+print(den > maxim)
+print(den == maxim)
+print(den)
