@@ -31,6 +31,8 @@ print('Скорость:', my_car.current_velocity)
 
 
 class Human:
+    head = True  #  атрибут класса, не только объекта(экземпляра), внутри экземпляера можно менять его
+
     def __init__(self, name, age):  # метод init, конструктор класса, то, что будет создаваться при инициализации объекта
         self.name = name  # определяем атрибуты, характеристику (name), атрибуты - переменные внутри класса
         self.age = age
@@ -82,3 +84,5 @@ print(den < maxim)
 print(den > maxim)
 print(den == maxim)
 print(den)
+
+print(Human.head)
