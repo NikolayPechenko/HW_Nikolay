@@ -8,7 +8,7 @@ class User:
         self.nickname = nickname
         self.password = hash(password)
         self.age = int(age)
-        User.data[nickname] = [password, age]
+        User.data[self.nickname] = [self.password, self.age]
 
 
 class Video:
@@ -21,10 +21,14 @@ class Video:
         self.adult_mode = adult_mode
         Video.videos[title] = [duration, time_now, adult_mode]
 
+    def __str__(self):  #  позволяет обращаться по имени без self
+        return f'{self.title}'
+
 
 class UrTube:
     users = []
     videos = []
+    usable_videos = []
     current_user = None
 
     def __init__(self):
@@ -52,17 +56,18 @@ class UrTube:
             if i.title in UrTube.videos:
                 continue
             else:
-                UrTube.videos.append(i.title)
+                UrTube.videos.append(i)
+                UrTube.usable_videos.append(i.title)
 
     def get_videos(self, search):
         recommend = []
-        for i in UrTube.videos:
+        for i in UrTube.usable_videos:
             if search.upper() in i.upper():
                 recommend.append(i)
         return recommend
 
     def watch_video(self, title):
-        if title in UrTube.videos:
+        if title in UrTube.usable_videos:
             if self.current_user is None:
                 print('Войдите в аккаунт')
             else:
@@ -76,8 +81,9 @@ class UrTube:
 
 
 ur = UrTube()
-v1 = Video('Лучший язык программирования 2024 года', 20)
+v1 = Video('Лучший язык программирования 2024 года', 5)
 v2 = Video('Для чего девушкам парень программист?', 2, adult_mode=True)
+
 
 # Добавление видео
 ur.add(v1, v2)
@@ -95,3 +101,5 @@ ur.watch_video('Для чего девушкам парень программи
 ur.register('vasya_pupkin', 'F8098FM8fjm9jmi', 55)
 print(ur.current_user)
 ur.watch_video('Лучший язык программирования 2024 года')
+
+
