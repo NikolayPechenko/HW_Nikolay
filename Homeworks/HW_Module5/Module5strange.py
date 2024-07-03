@@ -8,7 +8,7 @@ class User:
         self.nickname = nickname
         self.password = hash(password)
         self.age = int(age)
-        User.data[self.nickname] = [self.password, self.age]
+        User.data[nickname] = [password, age]
 
 
 class Video:
@@ -21,14 +21,10 @@ class Video:
         self.adult_mode = adult_mode
         Video.videos[title] = [duration, time_now, adult_mode]
 
-    def __str__(self):  #  позволяет обращаться по имени без self
-        return f'{self.title}'
-
 
 class UrTube:
     users = []
     videos = []
-    usable_videos = []
     current_user = None
 
     def __init__(self):
@@ -51,23 +47,31 @@ class UrTube:
     def log_out(self):
         self.current_user = None
 
-    def add(self, *video):
-        for i in video:
-            if i.title in UrTube.videos:
+
+    def add(self, *videos):
+        list1 = []
+        for v in self.videos:
+            list1.append(v.title)
+        for video in videos:
+            if video.title in list1:
                 continue
             else:
-                UrTube.videos.append(i)
-                UrTube.usable_videos.append(i.title)
+                self.videos.append(video)
+
 
     def get_videos(self, search):
+        search = search.upper()
         recommend = []
-        for i in UrTube.usable_videos:
-            if search.upper() in i.upper():
-                recommend.append(i)
+        for v in self.videos:
+            if search in v.title.upper():
+                recommend.append(v.title)
         return recommend
 
     def watch_video(self, title):
-        if title in UrTube.usable_videos:
+        list2 = []
+        for v in self.videos:
+            list2.append(v.title)
+        if title in list2:
             if self.current_user is None:
                 print('Войдите в аккаунт')
             else:
