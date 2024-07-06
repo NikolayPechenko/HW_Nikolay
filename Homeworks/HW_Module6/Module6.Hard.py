@@ -1,3 +1,6 @@
+import math
+
+
 class Figure:
     sides_count = 0
 
@@ -59,10 +62,10 @@ class Circle(Figure):
 
     def __init__(self, color, *sides):
         super().__init__(color, sides)
-        self.__radius = self.get_sides()[0] / 2 / 3.14
+        self.__radius = self.get_sides()[0] / 2 / math.pi
 
     def get_square(self):
-        return self.__radius * self.__radius * 3.14
+        return self.__radius * self.__radius * math.pi
 
     def www(self):
         return self.__radius

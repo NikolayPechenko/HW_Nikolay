@@ -14,7 +14,7 @@ class Eagle:
         self.sound = 'I train, eat, sleep, and repeat'
 
     def fly(self, dy):
-        print(dy)
+        self.y_distance += dy
 
 
 class Pegasus(Horse, Eagle):
