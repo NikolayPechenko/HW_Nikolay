@@ -68,7 +68,7 @@ def f2():
             print(summ)
         except ZeroDivisionError as exc:  # перехватили прямо здесь, продолжили работу функции
             print(f'Что-то пошло не так - {exc}')
-    return summ 
+    return summ
 
 
 try:
