@@ -19,11 +19,11 @@ def introspection_info(obj):
         dict_['Имя объекта'] = 'Нет имени'
     dict_['Тип объекта'] = type(obj)
     try:
-        dict_['Атрибуты объекта'] = obj.__dict__
+        dict_['Атрибуты объекта'] = [method for method in dir(obj) if not callable(getattr(obj, method))]
     except AttributeError:
         dict_['Атрибуты объекта'] = 'Нет атрибутов'
-    dict_['Методы объекта'] = dir(obj)
-    dict_['Модуль'] = inspect.getmodule(obj)
+    dict_['Методы объекта'] = [method for method in dir(obj) if callable(getattr(obj, method))]
+    dict_['Модуль'] = obj.__class__.__module__
     dict_['Наличие атрибута cost'] = hasattr(obj, 'cost')
     dict_['Наличие атрибута count'] = hasattr(obj, 'count')
     return dict_
@@ -35,6 +35,5 @@ pprint.pprint(introspection_info(apple))
 
 # a = 27
 # pprint.pprint(introspection_info(a))
-
 
 
