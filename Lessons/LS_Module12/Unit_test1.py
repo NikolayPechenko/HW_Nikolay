@@ -3,6 +3,20 @@ import unittest
 
 
 class Calctest(unittest.TestCase):
+    def setUp(self):  # запускается перед каждым тест кейсом
+        print('setUp')
+
+    @classmethod
+    def setUpClass(cls):  # запускается один раз перед тест кейсами
+        print('MegasetUp')
+
+    def tearDown(self):  # аналогично в конце
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
     def test_add(self):
         self.assertEqual(calc.add(1, 2), 3)
 
