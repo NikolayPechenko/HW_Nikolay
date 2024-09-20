@@ -39,11 +39,4 @@ class Tournament:
         return finishers
 
 
-Usain = Runner('Usain', 20)
-Andrey = Runner('Andrey', 10)
-Nick = Runner('Nick', 2)
-#
-a = Tournament(90, Andrey, Usain, Nick)
-print(a.start())
-
 
