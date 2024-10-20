@@ -26,10 +26,24 @@ cursor.execute('CREATE INDEX IF NOT EXISTS idx_email ON Users (email)')
 
 # cursor.execute('SELECT username, age FROM Users WHERE age < ?', (35,))
 
-cursor.execute('SELECT username, age FROM Users WHERE age < ?', (35,))
-users = cursor.fetchall()  # записали в переменную
-for i in users:
-    print(i)
+# cursor.execute('SELECT username, age FROM Users WHERE age < ?', (35,))
+
+# cursor.execute('SELECT SUM(age) FROM Users')
+# users = cursor.fetchall()  # записали в переменную.
+# for i in users:
+#     print(i)
+
+cursor.execute('SELECT SUM(age) FROM Users')
+total1 = cursor.fetchone()[0]  # Для выборки из одной строки, позволяет получать конкретный элемент
+cursor.execute('SELECT count(age) FROM Users')
+total2 = cursor.fetchone()[0]  # перед каждым тоталом новый cursor.execute (запрос)
+print(total1/total2 + 1)
+cursor.execute('SELECT avg(age) FROM Users')
+total3 = cursor.fetchone()[0]
+print(total3 + 1)
+cursor.execute('SELECT min(age), max(age) FROM Users')
+total4 = cursor.fetchone()
+print(total4)
 
 connection.commit()
 connection.close()
