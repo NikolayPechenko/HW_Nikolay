@@ -10,6 +10,7 @@ import asyncio
 from practice_config import *
 from practice_keyaboards import *
 from practice_text import *
+from admin import *
 
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=api)
