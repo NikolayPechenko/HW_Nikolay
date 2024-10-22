@@ -14,14 +14,23 @@ dp = Dispatcher(bot, storage=MemoryStorage())
 kb = ReplyKeyboardMarkup(resize_keyboard=True)
 button1 = KeyboardButton(text='Рассчитать')
 button2 = KeyboardButton(text='Информация')
+button3 = KeyboardButton(text='Купить')
 kb.add(button1)
 kb.insert(button2)
+kb.add(button3)
 
 kb2 = InlineKeyboardMarkup(resize_keyboard=True)
 button1 = InlineKeyboardButton(text='Рассчитать номру калорий', callback_data='calories')
 button2 = InlineKeyboardButton(text='Формулы расчёта', callback_data='formulas')
 kb2.add(button1)
 kb2.insert(button2)
+
+kb3 = InlineKeyboardMarkup(resize_keyboard=True)
+button1 = InlineKeyboardButton(text='Product1', callback_data='product_buying')
+button2 = InlineKeyboardButton(text='Product2', callback_data='product_buying')
+button3 = InlineKeyboardButton(text='Product3', callback_data='product_buying')
+button4 = InlineKeyboardButton(text='Product4', callback_data='product_buying')
+kb3.row(button1, button2, button3, button4)
 
 
 class UserState(StatesGroup):
@@ -94,9 +103,28 @@ async def send_calories(message, state):
     await state.finish()
 
 
+@dp.message_handler(text='Купить')
+async def get_buying_list(message):
+    list1 = ['beauty', 'Collagen', 'D3', 'Omega']
+    c = 0
+    for i in list1:
+        c += 1
+        with open(f'photos/{i}.jpeg', 'rb') as img:
+            await message.answer(f'Название: Product{c} | Описание: {i} | Цена: {c * 100}')
+            await message.answer_photo(img)
+    await message.answer('Выберите продукт для покупки: ', reply_markup=kb3)
+
+
+@dp.callback_query_handler(text='product_buying')
+async def send_confirm_message(call):
+    await call.message.answer('Вы успешно приобрели продукт!')
+    await call.answer()
+
+
 @dp.message_handler()
 async def set_sex(message):
     await message.answer('Привет, я бот, помогающий твоему здоровью', reply_markup=kb)
+
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)

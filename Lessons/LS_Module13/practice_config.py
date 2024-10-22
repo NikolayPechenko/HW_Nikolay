@@ -1,5 +1,5 @@
 
-api = '7122619755:AAE7Zv08twybJN8s57AYfYvGUzgpPohpHJs'
+api = ''
 
 priceM = 1500
 priceL = 2000

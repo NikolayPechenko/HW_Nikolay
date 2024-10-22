@@ -17,13 +17,18 @@ dp = Dispatcher(bot, storage=MemoryStorage())
 
 
 @dp.message_handler(commands='start')
-async def start(message):
-    await message.answer('Рады вас видеть', reply_markup=start_kb)
+async def star(message):
+    await message.answer(f'Добро пожаловать, {message.from_user.username}. ' + start, reply_markup=start_kb)
+
+#  message.answer_photo
+#  message.answer_video
+#  message.answer_file
 
 
 @dp.message_handler(text='О нас')
 async def info(message):
-    await message.answer(about, reply_markup=start_kb)
+    with open('files/fotocartochka2.jpg', 'rb') as img:
+        await message.answer_photo(img, about, reply_markup=start_kb)
 
 
 @dp.message_handler(text='Стоимость')
@@ -55,8 +60,14 @@ async def buy_other(call):
     await call.answer()
 
 
+@dp.callback_query_handler(text='back_to_catalog')
+async def back(call):
+    await call.message.answer('Что вас интересует?', reply_markup=price_kb)
+    await call.answer()
+
+
 @dp.message_handler()
-async def start(message):
+async def star(message):
     await message.answer('Рады вас видеть, для начала введите /start')
 
 
