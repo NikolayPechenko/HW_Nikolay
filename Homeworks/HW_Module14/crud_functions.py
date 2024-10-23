@@ -5,7 +5,7 @@ cursor = connection.cursor()
 
 def initiate_db():
     cursor.execute('''
-    CREATE TABLE IF NOT EXISTS Users(
+    CREATE TABLE IF NOT EXISTS Products(
     id INTEGER PRIMARY KEY,
     title TEXT NOT NULL,
     description TEXT,
@@ -15,7 +15,7 @@ def initiate_db():
 
 
 def get_all_products():
-    cursor.execute('SELECT * FROM Users')
+    cursor.execute('SELECT * FROM Products')
     all_products = cursor.fetchall()
     return all_products
 
